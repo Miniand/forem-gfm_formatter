@@ -7,7 +7,7 @@ module Forem
         formatter = ::Redcarpet::Markdown.new(::Redcarpet::Render::HTML,
           :no_intra_emphasis => true, :fenced_code_blocks => true,
           :autolink => true, :lax_html_blocks => true)
-        formatter.render(ERB::Util.h(text)).html_safe
+        formatter.render(Forem::Sanitizer.sanitize(text)).html_safe
       end
 
 
