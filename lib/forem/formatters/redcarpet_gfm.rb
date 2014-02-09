@@ -7,14 +7,14 @@ module Forem
         formatter = ::Redcarpet::Markdown.new(::Redcarpet::Render::HTML,
           :no_intra_emphasis => true, :fenced_code_blocks => true,
           :autolink => true, :lax_html_blocks => true)
-        formatter.render(ERB::Util.h(text)).html_safe
+        formatter.render(text).html_safe
       end
 
 
       def self.blockquote(text)
         text.split("\n").map do |line|
           "> " + line
-        end.join("\n")
+        end.join("\n") + "\n\n"
       end
     end
   end
